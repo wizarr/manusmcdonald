@@ -89,11 +89,17 @@
         .hero-content { max-width: 800px; }
         .hero-attribution { margin-top: 1.5rem; font-size: 1.1rem; color: #555; }
 
-        /* NEW SCROLL PROMPT */
+        /* UPDATED SCROLL PROMPT */
         .scroll-prompt {
             position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
             font-size: 0.8rem; color: var(--text-muted);
             animation: fadeInOut 3s infinite;
+            transition: opacity 0.5s ease; /* For smooth fade out */
+        }
+        .scroll-prompt.is-hidden {
+            opacity: 0;
+            pointer-events: none; /* Make it unclickable when hidden */
+            animation: none; /* Stop animation when hidden */
         }
         @keyframes fadeInOut {
             0%, 100% { opacity: 0; }
@@ -199,7 +205,8 @@
                 <h1>What gets measured<br>gets managed.</h1>
                 <p class="hero-attribution">— Peter Drucker</p>
             </div>
-            <div class="scroll-prompt">Scroll for more</div>
+            <!-- SCROLL PROMPT ELEMENT -->
+            <div class="scroll-prompt" id="scroll-prompt">Scroll for more</div>
         </section>
 
         <!-- 3.2. The Creator's Manifesto -->
@@ -292,6 +299,29 @@
             <p>© 2025 Manus McDonald | <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a></p>
         </div>
     </footer>
+
+    <!-- =============================================================== -->
+    <!-- ============== NEW JAVASCRIPT FOR SMART SCROLL ============== -->
+    <!-- =============================================================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollPrompt = document.getElementById('scroll-prompt');
+
+            // Function to check scroll position and toggle visibility
+            function handleScroll() {
+                if (window.scrollY > 20) {
+                    // If user has scrolled down, hide the prompt
+                    scrollPrompt.classList.add('is-hidden');
+                } else {
+                    // If user is at the top, show the prompt
+                    scrollPrompt.classList.remove('is-hidden');
+                }
+            }
+
+            // Listen for scroll events
+            window.addEventListener('scroll', handleScroll);
+        });
+    </script>
 
 </body>
 </html>
