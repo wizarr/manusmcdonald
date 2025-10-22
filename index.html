@@ -49,14 +49,17 @@
 
         .container { max-width: 960px; margin: auto; overflow: hidden; padding: 0 2rem; }
 
-        h1, h2, h3 { line-height: 1.1; font-weight: 700; }
+        h1, h2, h3 { line-height: 1.2; font-weight: 700; }
         
         h1 { 
             font-size: clamp(2.5rem, 6vw, 6rem);
             letter-spacing: -1.5px; 
         }
         
-        h2 { font-size: 2.5rem; text-align: center; margin-bottom: 4rem; letter-spacing: -1px; }
+        h2 { 
+            font-size: 2.5rem; text-align: center; margin-bottom: 4rem; letter-spacing: -1px;
+            line-height: 1.4; /* UPDATED: Better for multi-line quotes */
+        }
         h3 { font-size: 1.5rem; margin-bottom: 1rem; }
         p { font-size: 1.1rem; margin-bottom: 1rem; max-width: 65ch; color: #555; }
         a { color: var(--primary-color); text-decoration: none; }
@@ -79,7 +82,7 @@
         
         .header-cta-circle {
             height: 60px; width: 60px;
-            background-color: var(--ui-subtle-bg); /* UPDATED: Using more subtle grey */
+            background-color: var(--ui-subtle-bg);
             border: 1px solid var(--border-color);
             border-radius: 50%;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -94,26 +97,27 @@
         .hamburger, .mobile-nav { display: none; }
         
         /* ------------------------- */
-        /* --- NEW: Sticky Vertical Link --- */
+        /* --- Sticky Vertical Link --- */
         /* ------------------------- */
-        .sticky-linkedin-link {
-            position: fixed;
-            top: 50%;
-            right: 0;
+        .sticky-social-link {
+            position: fixed; top: 50%; right: 0; z-index: 999;
             transform: translateY(-50%);
             background-color: var(--primary-color);
             color: var(--secondary-color);
-            padding: 1.2rem 0.8rem;
+            padding: 1rem 0.8rem;
             writing-mode: vertical-rl;
             text-decoration: none;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            z-index: 999;
             transition: background-color var(--transition-speed);
+            display: flex; align-items: center; gap: 0.8rem;
         }
-        .sticky-linkedin-link:hover {
-            background-color: var(--accent-color);
+        .sticky-social-link:hover { background-color: var(--accent-color); }
+        .sticky-social-link span {
+            font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase;
+        }
+        .sticky-social-link svg {
+            width: 16px; height: 16px;
+            fill: var(--secondary-color);
+            transform: rotate(90deg); /* Correct orientation */
         }
 
 
@@ -133,11 +137,7 @@
             animation: fadeInOut 3s infinite;
             transition: opacity 0.5s ease;
         }
-        .scroll-prompt.is-hidden {
-            opacity: 0;
-            pointer-events: none;
-            animation: none;
-        }
+        .scroll-prompt.is-hidden { opacity: 0; pointer-events: none; animation: none; }
         @keyframes fadeInOut {
             0%, 100% { opacity: 0; }
             50% { opacity: 1; }
@@ -219,9 +219,7 @@
             .portfolio-item { grid-template-columns: 1fr; gap: 2rem; }
             .portfolio-visual { height: 200px; }
             .hero { height: 90vh; }
-            
-            /* Hide sticky link on mobile */
-            .sticky-linkedin-link { display: none; }
+            .sticky-social-link { display: none; }
         }
     </style>
 </head>
@@ -237,8 +235,11 @@
         </a>
     </div>
 
-    <!-- NEW STICKY LINK ELEMENT -->
-    <a href="https://www.linkedin.com/" target="_blank" class="sticky-linkedin-link">LinkedIn</a>
+    <!-- UPDATED STICKY LINK ELEMENT -->
+    <a href="https://www.linkedin.com/" target="_blank" class="sticky-social-link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.23 0H1.77C.8 0 0 .77 0 1.72v20.56C0 23.23.8 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0zM7.06 20.45h-3.5V8.97h3.5v11.48zM5.31 7.42c-1.14 0-2.07-.93-2.07-2.07s.93-2.07 2.07-2.07 2.07.93 2.07 2.07-.93 2.07-2.07 2.07zm15.14 13.03h-3.5v-5.58c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.95v5.68h-3.5V8.97h3.36v1.54h.05c.47-.88 1.6-1.82 3.3-1.82 3.55 0 4.2 2.34 4.2 5.38v6.23z"/></svg>
+        <span>linkedin</span>
+    </a>
 
     <main>
         <!-- 3.1. The Opening Monologue -->
@@ -253,7 +254,8 @@
         <!-- 3.2. The Creator's Manifesto -->
         <section class="manifesto" id="about">
             <div class="container">
-                <h2>The Creator's Manifesto</h2>
+                <!-- HEADLINE UPDATED -->
+                <h2>Efficiency is doing things right;<br>Effectiveness is doing the right things.</h2>
                 <p>
                     After two decades architecting commercial success from within, I deliberately pivoted. The corporate toolkit, while powerful, was no longer sufficient for the complexity of modern business problems. The true advantage is no longer found in managing processes, but in creating entirely new engines of value. This realization led me to pursue a rigorous MSc in Data Analytics, not as a career change, but as a deliberate acquisition of a creator's most powerful new medium: data.
                 </p>
@@ -309,7 +311,8 @@
         <!-- 3.4. The Digital Workshop -->
         <section class="toolkit" id="toolkit">
             <div class="container">
-                <h2>The Digital Workshop</h2>
+                <!-- HEADLINE UPDATED -->
+                <h2>Strategy is a commodity;<br>Execution is an art.</h2>
                 <p>The tools of the creator, applied with craft and precision.</p>
                 <ul class="toolkit-list">
                     <li>Python</li>
