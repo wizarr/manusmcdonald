@@ -23,12 +23,13 @@
         /* --- Global Styles & Variables --- */
         /* ------------------------- */
         :root {
-            /* COLOR PALETTE DOCUMENTATION - v1.1 */
+            /* COLOR PALETTE DOCUMENTATION - v1.2 */
             --primary-color: #0A0A0A;      /* Role: Primary Text */
             --secondary-color: #F8F8F8;    /* Role: Main Background */
-            --border-color: #EAEAEA;       /* Role: Borders, UI Backgrounds */
+            --border-color: #EAEAEA;       /* Role: Borders */
+            --ui-subtle-bg: #F2F2F2;       /* Role: UI Backgrounds (NEW) */
             --text-muted: #888888;         /* Role: Secondary Text */
-            --accent-color: #4A5568;       /* Role: Strategic Accent (NEW) */
+            --accent-color: #4A5568;       /* Role: Strategic Accent */
 
             --font-main: 'Sora', 'Helvetica Neue', Arial, sans-serif;
             --transition-speed: 0.3s ease;
@@ -48,7 +49,7 @@
 
         .container { max-width: 960px; margin: auto; overflow: hidden; padding: 0 2rem; }
 
-        h1, h2, h3 { line-height: 1.1; font-weight: 700; }
+        h1, h2, h3 { line-height: 1.1; /* Adjusted for tighter feel */ font-weight: 700; }
         
         h1 { 
             font-size: clamp(2.5rem, 6vw, 6rem);
@@ -71,11 +72,15 @@
         }
         .nav-name, .header-cta-circle { pointer-events: auto; /* Make only these elements clickable */ }
 
-        .nav-name { font-size: 1.5rem; font-weight: 700; } /* UPDATED: Now bold for a name */
+        .nav-name { 
+            font-size: 1.5rem; 
+            font-weight: 400; /* UPDATED: Not bold */
+        }
         
         .header-cta-circle {
             height: 60px; width: 60px;
-            background-color: var(--border-color); /* UPDATED: Added subtle background */
+            background-color: var(--ui-subtle-bg); /* UPDATED: Using more subtle grey */
+            border: 1px solid var(--border-color);
             border-radius: 50%;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             transition: background-color var(--transition-speed);
@@ -136,7 +141,7 @@
         }
         .portfolio-description h3 { color: var(--primary-color); }
         .portfolio-description p { font-size: 1rem; color: #555; }
-        .value-metric { font-weight: bold; font-size: 1.1rem; color: var(--accent-color); /* UPDATED: Using accent color */ }
+        .value-metric { font-weight: bold; font-size: 1.1rem; color: var(--accent-color); }
         
         /* ---------------------------------------------------- */
         /* --- 3.4. Section 4: The Digital Workshop --- */
@@ -176,7 +181,7 @@
             border-top: 1px solid var(--border-color);
         }
         .footer a { color: var(--text-muted); text-decoration: underline; }
-        .footer a:hover { color: var(--accent-color); /* UPDATED: Using accent color on hover */ }
+        .footer a:hover { color: var(--accent-color); }
 
         /* ------------------------- */
         /* --- Responsive Design --- */
