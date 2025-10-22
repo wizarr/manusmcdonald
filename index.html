@@ -11,10 +11,10 @@
     <!-- FAVICON (Replace with your own) -->
     <link rel="icon" href="images/favicon.png" type="image/png">
 
-    <!-- FONT IMPORT FROM GOOGLE FONTS -->
+    <!-- FONT UPDATED TO SORA -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
         /* CSS MANDATE: yourwave.nl & stripe.com principles */
@@ -26,7 +26,8 @@
             --primary-color: #0A0A0A; /* Sharp Black */
             --secondary-color: #F8F8F8; /* Off-White/Light Grey Background */
             --border-color: #EAEAEA;
-            --font-main: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+            /* FONT UPDATED */
+            --font-main: 'Sora', 'Helvetica Neue', Arial, sans-serif;
             --transition-speed: 0.3s ease;
             --header-height: 90px;
         }
@@ -45,7 +46,7 @@
         .container { max-width: 960px; margin: auto; overflow: hidden; padding: 0 2rem; }
 
         h1, h2, h3 { line-height: 1.2; font-weight: 700; }
-        h1 { font-size: 4rem; letter-spacing: -2px; /* Subtle architectural touch */ }
+        h1 { font-size: 3.8rem; letter-spacing: -1.5px; /* Refined for Sora */ }
         h2 { font-size: 2.5rem; text-align: center; margin-bottom: 4rem; letter-spacing: -1px; }
         h3 { font-size: 1.5rem; margin-bottom: 1rem; }
         p { font-size: 1.1rem; margin-bottom: 1rem; max-width: 65ch; color: #555; }
@@ -56,13 +57,16 @@
         /* --- UPDATED Header & Navigation --- */
         /* ------------------------- */
         .header {
-            position: fixed; /* Changed to fixed for corner positioning */
+            position: fixed;
             top: 0; left: 0; width: 100%; z-index: 1000;
             display: flex; justify-content: space-between; align-items: center;
             padding: 0 2rem; height: var(--header-height);
             background-color: transparent; /* No background bar */
         }
-        .nav-logo a { font-weight: bold; font-size: 1.5rem; }
+        .nav-logo a {
+            font-weight: 400; /* UPDATED: Not bold */
+            font-size: 1.5rem;
+        }
         
         /* The new circular CTA */
         .header-cta-circle {
@@ -74,8 +78,11 @@
         }
         .header-cta-circle:hover { background-color: var(--primary-color); border-color: var(--primary-color); }
         .header-cta-circle .bar {
-            display: block; width: 20px; height: 1px; background-color: var(--primary-color);
-            margin: 2px 0;
+            display: block;
+            width: 24px; /* UPDATED: Wider bar */
+            height: 1px;
+            background-color: var(--primary-color);
+            margin: 3px 0; /* UPDATED: Adjusted spacing */
             transition: background-color var(--transition-speed);
         }
         .header-cta-circle:hover .bar { background-color: var(--secondary-color); }
