@@ -47,8 +47,11 @@
 
         h1, h2, h3 { line-height: 1.1; /* Adjusted for tighter feel */ font-weight: 700; }
         
-        /* H1 STYLES UPDATED */
-        h1 { font-size: 7.6rem; letter-spacing: -3px; }
+        /* H1 STYLES UPDATED TO BE DYNAMIC */
+        h1 { 
+            font-size: clamp(3rem, 7vw, 7rem); /* MIN, PREFERRED, MAX */
+            letter-spacing: -2px; 
+        }
         
         h2 { font-size: 2.5rem; text-align: center; margin-bottom: 4rem; letter-spacing: -1px; }
         h3 { font-size: 1.5rem; margin-bottom: 1rem; }
@@ -89,7 +92,7 @@
             height: 100vh;
             display: flex; align-items: center; justify-content: center; text-align: center;
         }
-        .hero-content { max-width: 900px; /* Increased max-width for larger font */ }
+        .hero-content { max-width: 90%; /* Let the headline width be more fluid */ }
         
         /* SCROLL PROMPT */
         .scroll-prompt {
@@ -176,9 +179,6 @@
         /* --- Responsive Design --- */
         /* ------------------------- */
         @media (max-width: 768px) {
-            /* H1 MOBILE STYLES UPDATED */
-            h1 { font-size: 5rem; letter-spacing: -2px; }
-
             h2 { font-size: 2rem; }
             .container { padding: 0 1rem; }
             section { padding: 5rem 0; }
@@ -203,11 +203,10 @@
     </div>
 
     <main>
-        <!-- 3.1. The Opening Monologue - UPDATED -->
+        <!-- 3.1. The Opening Monologue -->
         <section class="hero" id="hero">
             <div class="hero-content">
                 <h1>What gets measured<br>gets managed.</h1>
-                <!-- ATTRIBUTION REMOVED -->
             </div>
             <!-- SCROLL PROMPT ELEMENT -->
             <div class="scroll-prompt" id="scroll-prompt">Scroll for more</div>
@@ -304,25 +303,18 @@
         </div>
     </footer>
 
-    <!-- =============================================================== -->
-    <!-- ============== NEW JAVASCRIPT FOR SMART SCROLL ============== -->
-    <!-- =============================================================== -->
+    <!-- JAVASCRIPT FOR SMART SCROLL -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const scrollPrompt = document.getElementById('scroll-prompt');
 
-            // Function to check scroll position and toggle visibility
             function handleScroll() {
                 if (window.scrollY > 20) {
-                    // If user has scrolled down, hide the prompt
                     scrollPrompt.classList.add('is-hidden');
                 } else {
-                    // If user is at the top, show the prompt
                     scrollPrompt.classList.remove('is-hidden');
                 }
             }
-
-            // Listen for scroll events
             window.addEventListener('scroll', handleScroll);
         });
     </script>
