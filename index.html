@@ -45,8 +45,11 @@
 
         .container { max-width: 960px; margin: auto; overflow: hidden; padding: 0 2rem; }
 
-        h1, h2, h3 { line-height: 1.2; font-weight: 700; }
-        h1 { font-size: 4.2rem; letter-spacing: -2px; /* Base size for large part */ }
+        h1, h2, h3 { line-height: 1.1; /* Adjusted for tighter feel */ font-weight: 700; }
+        
+        /* H1 STYLES UPDATED */
+        h1 { font-size: 7.6rem; letter-spacing: -3px; }
+        
         h2 { font-size: 2.5rem; text-align: center; margin-bottom: 4rem; letter-spacing: -1px; }
         h3 { font-size: 1.5rem; margin-bottom: 1rem; }
         p { font-size: 1.1rem; margin-bottom: 1rem; max-width: 65ch; color: #555; }
@@ -86,26 +89,20 @@
             height: 100vh;
             display: flex; align-items: center; justify-content: center; text-align: center;
         }
-        .hero-content { max-width: 900px; }
-        
-        /* UPDATED H1 TYPOGRAPHIC SCALE */
-        .h1-large { display: block; }
-        .h1-small {
-            display: block;
-            font-size: 2.8rem; /* Approx 66% of 4.2rem */
-            font-weight: 400; /* Lighter weight for contrast */
-            color: #555;
-            margin-top: -0.5rem;
-        }
+        .hero-content { max-width: 900px; /* Increased max-width for larger font */ }
         
         /* SCROLL PROMPT */
         .scroll-prompt {
             position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
             font-size: 0.8rem; color: var(--text-muted);
             animation: fadeInOut 3s infinite;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.5s ease; /* For smooth fade out */
         }
-        .scroll-prompt.is-hidden { opacity: 0; pointer-events: none; animation: none; }
+        .scroll-prompt.is-hidden {
+            opacity: 0;
+            pointer-events: none; /* Make it unclickable when hidden */
+            animation: none; /* Stop animation when hidden */
+        }
         @keyframes fadeInOut {
             0%, 100% { opacity: 0; }
             50% { opacity: 1; }
@@ -179,8 +176,9 @@
         /* --- Responsive Design --- */
         /* ------------------------- */
         @media (max-width: 768px) {
-            h1 { font-size: 2.8rem; letter-spacing: -1px; }
-            .h1-small { font-size: 1.8rem; }
+            /* H1 MOBILE STYLES UPDATED */
+            h1 { font-size: 5rem; letter-spacing: -2px; }
+
             h2 { font-size: 2rem; }
             .container { padding: 0 1rem; }
             section { padding: 5rem 0; }
@@ -208,10 +206,8 @@
         <!-- 3.1. The Opening Monologue - UPDATED -->
         <section class="hero" id="hero">
             <div class="hero-content">
-                <h1>
-                    <span class="h1-large">What gets measured</span>
-                    <span class="h1-small">gets managed.</span>
-                </h1>
+                <h1>What gets measured<br>gets managed.</h1>
+                <!-- ATTRIBUTION REMOVED -->
             </div>
             <!-- SCROLL PROMPT ELEMENT -->
             <div class="scroll-prompt" id="scroll-prompt">Scroll for more</div>
@@ -308,18 +304,25 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT FOR SMART SCROLL -->
+    <!-- =============================================================== -->
+    <!-- ============== NEW JAVASCRIPT FOR SMART SCROLL ============== -->
+    <!-- =============================================================== -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const scrollPrompt = document.getElementById('scroll-prompt');
 
+            // Function to check scroll position and toggle visibility
             function handleScroll() {
                 if (window.scrollY > 20) {
+                    // If user has scrolled down, hide the prompt
                     scrollPrompt.classList.add('is-hidden');
                 } else {
+                    // If user is at the top, show the prompt
                     scrollPrompt.classList.remove('is-hidden');
                 }
             }
+
+            // Listen for scroll events
             window.addEventListener('scroll', handleScroll);
         });
     </script>
