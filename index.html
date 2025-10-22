@@ -11,7 +11,7 @@
     <!-- FAVICON (Replace with your own) -->
     <link rel="icon" href="images/favicon.png" type="image/png">
 
-    <!-- FONT UPDATED TO SORA -->
+    <!-- FONT IMPORT FROM GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap" rel="stylesheet">
@@ -57,7 +57,7 @@
         /* --- UPDATED Header & Navigation --- */
         /* ------------------------- */
         .header {
-            position: fixed;
+            position: fixed; /* Changed to fixed for corner positioning */
             top: 0; left: 0; width: 100%; z-index: 1000;
             display: flex; justify-content: space-between; align-items: center;
             padding: 0 2rem; height: var(--header-height);
@@ -201,7 +201,7 @@
         <!-- 3.1. The Opening Monologue - UPDATED -->
         <section class="hero" id="hero">
             <div class="hero-content">
-                <h1>What gets measured gets managed.</h1>
+                <h1>What gets measured<br>gets managed.</h1>
                 <p class="hero-attribution">— Peter Drucker</p>
             </div>
         </section>
