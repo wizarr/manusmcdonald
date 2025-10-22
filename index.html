@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO OPTIMIZED FOR MANUS MCDONALD -->
+    <!-- SEO OPTIMIZED TITLE TAG -->
     <title>Manus McDonald | Creator & Business Technologist</title>
     <meta name="description" content="Manus McDonald is a Creator & Business Technologist solving complex problems across data, AI, and serverless applications.">
 
     <!-- FAVICON (Replace with your own) -->
     <link rel="icon" href="images/favicon.png" type="image/png">
+
+    <!-- FONT IMPORT FROM GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
         /* CSS MANDATE: yourwave.nl & stripe.com principles */
@@ -18,11 +23,12 @@
         /* --- Global Styles & Variables --- */
         /* ------------------------- */
         :root {
-            --primary-color: #000000; /* Black */
-            --secondary-color: #FFFFFF; /* White */
-            --font-main: 'Helvetica Neue', Arial, sans-serif;
+            --primary-color: #0A0A0A; /* Sharp Black */
+            --secondary-color: #F8F8F8; /* Off-White/Light Grey Background */
+            --border-color: #EAEAEA;
+            --font-main: 'Inter', 'Helvetica Neue', Arial, sans-serif;
             --transition-speed: 0.3s ease;
-            --header-height: 80px;
+            --header-height: 90px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,108 +36,109 @@
 
         body {
             font-family: var(--font-main);
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
             line-height: 1.7;
+            -webkit-font-smoothing: antialiased; /* Smoother font rendering */
         }
 
         .container { max-width: 960px; margin: auto; overflow: hidden; padding: 0 2rem; }
 
         h1, h2, h3 { line-height: 1.2; font-weight: 700; }
         h1 { font-size: 4rem; }
-        h2 { font-size: 2.5rem; text-align: center; margin-bottom: 3rem; }
+        h2 { font-size: 2.5rem; text-align: center; margin-bottom: 4rem; }
         h3 { font-size: 1.5rem; margin-bottom: 1rem; }
-        p { font-size: 1.1rem; margin-bottom: 1rem; max-width: 65ch; } /* Limiting line length for readability */
-        a { color: var(--secondary-color); text-decoration: none; }
-        section { padding: 6rem 0; }
+        p { font-size: 1.1rem; margin-bottom: 1rem; max-width: 65ch; color: #555; }
+        a { color: var(--primary-color); text-decoration: none; }
+        section { padding: 8rem 0; }
 
         /* ------------------------- */
-        /* --- Header & Navigation --- */
+        /* --- UPDATED Header & Navigation --- */
         /* ------------------------- */
         .header {
-            position: sticky; top: 0; left: 0; width: 100%; z-index: 1000;
+            position: fixed; /* Changed to fixed for corner positioning */
+            top: 0; left: 0; width: 100%; z-index: 1000;
             display: flex; justify-content: space-between; align-items: center;
             padding: 0 2rem; height: var(--header-height);
-            background-color: var(--primary-color);
-            border-bottom: 1px solid #333;
+            background-color: transparent; /* No background bar */
         }
         .nav-logo a { font-weight: bold; font-size: 1.5rem; }
-        .header-cta {
-            border: 1px solid var(--secondary-color);
-            padding: 0.6rem 1.2rem;
-            font-weight: bold;
-            transition: background-color var(--transition-speed), color var(--transition-speed);
+        
+        /* The new circular CTA */
+        .header-cta-circle {
+            height: 60px; width: 60px;
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            transition: background-color var(--transition-speed), border-color var(--transition-speed);
         }
-        .header-cta:hover { background-color: var(--secondary-color); color: var(--primary-color); }
-        .hamburger, .mobile-nav { display: none; } /* Simplified header, no mobile menu for now */
+        .header-cta-circle:hover { background-color: var(--primary-color); border-color: var(--primary-color); }
+        .header-cta-circle .bar {
+            display: block; width: 20px; height: 1px; background-color: var(--primary-color);
+            margin: 2px 0;
+            transition: background-color var(--transition-speed);
+        }
+        .header-cta-circle:hover .bar { background-color: var(--secondary-color); }
+        .hamburger, .mobile-nav { display: none; }
 
         /* ---------------------------------------------------- */
         /* --- 3.1. Section 1: The Opening Monologue (Hook) --- */
-        /* --- Influence: yourwave.nl --- */
         /* ---------------------------------------------------- */
         .hero {
-            height: calc(100vh - var(--header-height));
+            height: 100vh;
             display: flex; align-items: center; justify-content: center; text-align: center;
+            padding-top: var(--header-height); /* Push content down from header */
         }
         .hero-content { max-width: 800px; }
-        .hero h1 { text-shadow: none; }
-
+        
         /* ---------------------------------------------------- */
         /* --- 3.2. Section 2: The Creator's Manifesto --- */
         /* ---------------------------------------------------- */
-        .manifesto { text-align: center; background-color: #111; }
+        .manifesto { text-align: center; background-color: var(--secondary-color); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
         .manifesto p { margin-left: auto; margin-right: auto; }
 
         /* ---------------------------------------------------- */
         /* --- 3.3. Section 3: Portfolio of Creations --- */
-        /* --- Influence: dotsandlines.io --- */
         /* ---------------------------------------------------- */
-        .portfolio { background-color: var(--primary-color); }
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: 1fr; /* Single column for focused case studies */
-            gap: 5rem;
-        }
+        .portfolio { background-color: var(--secondary-color); }
+        .portfolio-grid { display: grid; grid-template-columns: 1fr; gap: 6rem; }
         .portfolio-item {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 2rem;
-            align-items: center;
-            border-top: 1px solid #333;
-            padding-top: 3rem;
+            display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: flex-start;
+            padding-top: 4rem; border-top: 1px solid var(--border-color);
         }
         .portfolio-visual {
-            background: #111; border: 1px solid #333;
+            background: transparent; border: 1px solid var(--border-color);
             height: 300px; display: flex; align-items: center; justify-content: center;
-            font-style: italic; color: #888;
+            font-style: italic; color: #aaa; border-radius: 8px;
         }
-        .portfolio-description h3 { color: var(--secondary-color); }
-        .portfolio-description p { font-size: 1rem; color: #ccc; }
-        .value-metric { font-weight: bold; font-size: 1.2rem; color: #4CAF50; /* A single pop of color for value */ }
+        .portfolio-description h3 { color: var(--primary-color); }
+        .portfolio-description p { font-size: 1rem; color: #555; }
+        .value-metric { font-weight: bold; font-size: 1.1rem; color: #007A00; /* Darker green for subtlety */ }
         
         /* ---------------------------------------------------- */
         /* --- 3.4. Section 4: The Digital Workshop --- */
         /* ---------------------------------------------------- */
-        .toolkit { background-color: #111; text-align: center; }
+        .toolkit { background-color: var(--secondary-color); text-align: center; border-top: 1px solid var(--border-color); }
         .toolkit-list {
             display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
             list-style: none; margin-top: 2rem;
         }
         .toolkit-list li {
-            border: 1px solid #555;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            font-size: 0.9rem;
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem; border-radius: 100px; /* pill shape */
+            font-size: 0.9rem; color: #555;
         }
 
         /* ---------------------------------------------------- */
         /* --- 3.5. Section 5: The Call to Action --- */
         /* ---------------------------------------------------- */
-        .cta-section { text-align: center; }
+        .cta-section { text-align: center; background-color: var(--primary-color); color: var(--secondary-color); }
+        .cta-section h2 { color: var(--secondary-color); }
+        .cta-section p { color: #aaa; margin-left: auto; margin-right: auto; }
         .cta-button {
             display: inline-block;
             background: var(--secondary-color); color: var(--primary-color);
-            padding: 1.2rem 3rem; margin-top: 2rem;
+            padding: 1.2rem 3rem; margin-top: 2rem; border-radius: 50px;
             font-size: 1.2rem; font-weight: bold;
             transition: transform var(--transition-speed);
         }
@@ -141,26 +148,27 @@
         /* --- Footer --- */
         /* ------------------------- */
         .footer {
-            background-color: var(--primary-color); color: #888;
-            padding: 2rem 0; text-align: center;
-            border-top: 1px solid #333;
+            background-color: var(--secondary-color); color: #999;
+            padding: 3rem 0; text-align: center;
+            border-top: 1px solid var(--border-color);
         }
-        .footer a { color: #888; text-decoration: underline; }
-        .footer a:hover { color: var(--secondary-color); }
-
+        .footer a { color: #999; text-decoration: underline; }
+        .footer a:hover { color: var(--primary-color); }
 
         /* ------------------------- */
         /* --- Responsive Design --- */
         /* ------------------------- */
         @media (max-width: 768px) {
-            h1 { font-size: 2.8rem; }
+            h1 { font-size: 2.5rem; }
             h2 { font-size: 2rem; }
             .container { padding: 0 1rem; }
-            .portfolio-item { grid-template-columns: 1fr; }
+            section { padding: 5rem 0; }
+            .header { padding: 0 1rem; }
+            .header-cta-circle { height: 50px; width: 50px; }
+            .portfolio-item { grid-template-columns: 1fr; gap: 2rem; }
             .portfolio-visual { height: 200px; }
-            .hero { height: 70vh; }
+            .hero { height: 80vh; }
         }
-
     </style>
 </head>
 <body>
@@ -169,7 +177,10 @@
         <div class="nav-logo">
             <a href="#hero">Manus McDonald</a>
         </div>
-        <a href="#contact" class="header-cta">Strategy Call</a>
+        <a href="#contact" class="header-cta-circle" aria-label="Go to contact section">
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </a>
     </nav>
 
     <main>
@@ -189,9 +200,6 @@
                 </p>
                 <p>
                     Today, I operate as a multi-disciplinary Business Creator. I don't just analyze, I build. I don't just consult, I design. My work lives at the intersection of business process, data science, AI implementation, and serverless application development. I treat each business challenge as a creative problem, applying a fluid expertise to architect solutions that are not only effective but elegant and resilient.
-                </p>
-                <p>
-                    The "Creations" showcased here are the evidence of this philosophy. Each began with a complex business problem and ended with a tangible, quantifiable engine of value. This is the craft. The results are the art.
                 </p>
             </div>
         </section>
@@ -261,7 +269,7 @@
         <section class="cta-section" id="contact">
             <div class="container">
                 <h2>Let's Create Value.</h2>
-                <p>If you have a complex business problem that demands a creative, technical, and results-focused solution, let's talk.<br>I invite you to a no-obligation strategy call to discuss how we can build your next engine of value.</p>
+                <p>If you have a complex business problem that demands a creative, technical, and results-focused solution, let's talk. I invite you to a no-obligation strategy call to discuss how we can build your next engine of value.</p>
                 <!-- Replace '#' with your actual Calendly link -->
                 <a href="#" class="cta-button" target="_blank">Schedule Strategy Call</a>
             </div>
@@ -273,8 +281,6 @@
             <p>© 2025 Manus McDonald | <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a></p>
         </div>
     </footer>
-
-    <!-- No JavaScript needed for this minimalist design -->
 
 </body>
 </html>
