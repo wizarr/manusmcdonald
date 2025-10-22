@@ -26,14 +26,14 @@
             --primary-color: #0A0A0A; /* Sharp Black */
             --secondary-color: #F8F8F8; /* Off-White/Light Grey Background */
             --border-color: #EAEAEA;
-            /* FONT UPDATED */
+            --text-muted: #888;
             --font-main: 'Sora', 'Helvetica Neue', Arial, sans-serif;
             --transition-speed: 0.3s ease;
             --header-height: 90px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; scroll-padding-top: var(--header-height); }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: var(--font-main);
@@ -46,7 +46,7 @@
         .container { max-width: 960px; margin: auto; overflow: hidden; padding: 0 2rem; }
 
         h1, h2, h3 { line-height: 1.2; font-weight: 700; }
-        h1 { font-size: 3.8rem; letter-spacing: -1.5px; /* Refined for Sora */ }
+        h1 { font-size: 3.8rem; letter-spacing: -1.5px; }
         h2 { font-size: 2.5rem; text-align: center; margin-bottom: 4rem; letter-spacing: -1px; }
         h3 { font-size: 1.5rem; margin-bottom: 1rem; }
         p { font-size: 1.1rem; margin-bottom: 1rem; max-width: 65ch; color: #555; }
@@ -54,36 +54,27 @@
         section { padding: 8rem 0; }
 
         /* ------------------------- */
-        /* --- UPDATED Header & Navigation --- */
+        /* --- UPDATED Corner Navigation --- */
         /* ------------------------- */
-        .header {
-            position: fixed; /* Changed to fixed for corner positioning */
-            top: 0; left: 0; width: 100%; z-index: 1000;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 0 2rem; height: var(--header-height);
-            background-color: transparent; /* No background bar */
+        .corner-nav {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: flex-start; /* Align to top */
+            padding: 2rem; pointer-events: none; /* Let clicks pass through */
         }
-        .nav-logo a {
-            font-weight: 400; /* UPDATED: Not bold */
-            font-size: 1.5rem;
-        }
+        .nav-role, .header-cta-circle { pointer-events: auto; /* Make only these elements clickable */ }
+
+        .nav-role { font-size: 1rem; line-height: 1.4; }
         
-        /* The new circular CTA */
         .header-cta-circle {
             height: 60px; width: 60px;
-            border: 1px solid var(--border-color);
-            border-radius: 50%;
+            border: 1px solid var(--border-color); border-radius: 50%;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             transition: background-color var(--transition-speed), border-color var(--transition-speed);
         }
         .header-cta-circle:hover { background-color: var(--primary-color); border-color: var(--primary-color); }
         .header-cta-circle .bar {
-            display: block;
-            width: 24px; /* UPDATED: Wider bar */
-            height: 1px;
-            background-color: var(--primary-color);
-            margin: 3px 0; /* UPDATED: Adjusted spacing */
-            transition: background-color var(--transition-speed);
+            display: block; width: 24px; height: 1px; background-color: var(--primary-color);
+            margin: 3px 0; transition: background-color var(--transition-speed);
         }
         .header-cta-circle:hover .bar { background-color: var(--secondary-color); }
         .hamburger, .mobile-nav { display: none; }
@@ -94,15 +85,19 @@
         .hero {
             height: 100vh;
             display: flex; align-items: center; justify-content: center; text-align: center;
-            padding-top: var(--header-height); /* Push content down from header */
         }
         .hero-content { max-width: 800px; }
-        
-        /* NEW STYLE FOR QUOTE ATTRIBUTION */
-        .hero-attribution {
-            margin-top: 1.5rem;
-            font-size: 1.1rem;
-            color: #555;
+        .hero-attribution { margin-top: 1.5rem; font-size: 1.1rem; color: #555; }
+
+        /* NEW SCROLL PROMPT */
+        .scroll-prompt {
+            position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+            font-size: 0.8rem; color: var(--text-muted);
+            animation: fadeInOut 3s infinite;
+        }
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
         }
         
         /* ---------------------------------------------------- */
@@ -127,7 +122,7 @@
         }
         .portfolio-description h3 { color: var(--primary-color); }
         .portfolio-description p { font-size: 1rem; color: #555; }
-        .value-metric { font-weight: bold; font-size: 1.1rem; color: #007A00; /* Darker green for subtlety */ }
+        .value-metric { font-weight: bold; font-size: 1.1rem; color: #007A00; }
         
         /* ---------------------------------------------------- */
         /* --- 3.4. Section 4: The Digital Workshop --- */
@@ -162,11 +157,11 @@
         /* --- Footer --- */
         /* ------------------------- */
         .footer {
-            background-color: var(--secondary-color); color: #999;
+            background-color: var(--secondary-color); color: var(--text-muted);
             padding: 3rem 0; text-align: center;
             border-top: 1px solid var(--border-color);
         }
-        .footer a { color: #999; text-decoration: underline; }
+        .footer a { color: var(--text-muted); text-decoration: underline; }
         .footer a:hover { color: var(--primary-color); }
 
         /* ------------------------- */
@@ -177,33 +172,34 @@
             h2 { font-size: 2rem; }
             .container { padding: 0 1rem; }
             section { padding: 5rem 0; }
-            .header { padding: 0 1rem; }
+            .corner-nav { padding: 1.5rem 1rem; }
             .header-cta-circle { height: 50px; width: 50px; }
             .portfolio-item { grid-template-columns: 1fr; gap: 2rem; }
             .portfolio-visual { height: 200px; }
-            .hero { height: 80vh; }
+            .hero { height: 90vh; }
         }
     </style>
 </head>
 <body>
     
-    <nav class="header" id="header">
-        <div class="nav-logo">
-            <a href="#hero">Manus McDonald</a>
+    <div class="corner-nav">
+        <div class="nav-role">
+            Creator &<br>Business Technologist
         </div>
         <a href="#contact" class="header-cta-circle" aria-label="Go to contact section">
             <span class="bar"></span>
             <span class="bar"></span>
         </a>
-    </nav>
+    </div>
 
     <main>
-        <!-- 3.1. The Opening Monologue - UPDATED -->
+        <!-- 3.1. The Opening Monologue -->
         <section class="hero" id="hero">
             <div class="hero-content">
                 <h1>What gets measured<br>gets managed.</h1>
                 <p class="hero-attribution">— Peter Drucker</p>
             </div>
+            <div class="scroll-prompt">Scroll for more</div>
         </section>
 
         <!-- 3.2. The Creator's Manifesto -->
