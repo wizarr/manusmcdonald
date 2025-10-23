@@ -148,12 +148,9 @@
         }
         
         /* ---------------------------------------------------- */
-        /* --- Sections --- */
+        /* --- Manifesto & Portfolio Sections --- */
         /* ---------------------------------------------------- */
-        .manifesto, .portfolio, .curated-signal, .toolkit { 
-            border-top: 1px solid var(--border-color); 
-        }
-
+        .manifesto, .portfolio { text-align: center; background-color: var(--secondary-color); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
         .manifesto p, .portfolio-description p { margin-left: auto; margin-right: auto; text-align: left; }
         .portfolio-grid { display: grid; grid-template-columns: 1fr; gap: 6rem; }
         .portfolio-item {
@@ -161,14 +158,22 @@
             padding-top: 4rem;
         }
         .portfolio-visual {
-            background: transparent; border: 1px solid var(--border-color);
+            background-color: var(--secondary-color); border: 1px solid var(--border-color);
             height: 300px; display: flex; align-items: center; justify-content: center;
-            font-style: italic; color: #aaa; border-radius: 8px;
+            border-radius: 8px; overflow: hidden; /* Hide parts of image that don't fit */
+        }
+        /* NEW STYLE FOR PORTFOLIO IMAGES */
+        .portfolio-visual img {
+            width: 100%; height: 100%; object-fit: cover;
         }
         .portfolio-description h3 { color: var(--primary-color); text-align: left; }
         .portfolio-description p { font-size: 1rem; color: #555; }
         .value-metric { font-weight: bold; font-size: 1.1rem; color: var(--accent-color); }
         
+        /* ---------------------------------------------------- */
+        /* --- Curated Signal Section --- */
+        /* ---------------------------------------------------- */
+        .curated-signal { background-color: var(--secondary-color); border-top: 1px solid var(--border-color); }
         .curated-grid {
             display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
         }
@@ -219,6 +224,11 @@
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
         }
 
+
+        /* ---------------------------------------------------- */
+        /* --- Toolkit & CTA Sections --- */
+        /* ---------------------------------------------------- */
+        .toolkit { text-align: center; border-top: 1px solid var(--border-color); }
         .toolkit-list {
             display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
             list-style: none; margin-top: 2rem;
@@ -227,7 +237,6 @@
             border: 1px solid var(--border-color); padding: 0.5rem 1rem; border-radius: 100px;
             font-size: 0.9rem; color: #555;
         }
-
         .cta-section { text-align: center; background-color: var(--primary-color); color: var(--secondary-color); }
         .cta-section h2 { color: var(--secondary-color); }
         .cta-section p { color: #aaa; margin-left: auto; margin-right: auto; }
@@ -249,19 +258,6 @@
         }
         .footer a { color: var(--text-muted); text-decoration: underline; }
         .footer a:hover { color: var(--accent-color); }
-        
-        /* ------------------------------------ */
-        /* --- NEW CSS FOR SCROLL TRANSITIONS --- */
-        /* ------------------------------------ */
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .fade-in-section.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
 
         /* ------------------------- */
         /* --- Responsive Design --- */
@@ -301,7 +297,7 @@
     </a>
 
     <main>
-        <!-- ADDED .fade-in-section to each section -->
+        <!-- 3.1. The Opening Monologue -->
         <section class="hero" id="hero">
             <div class="hero-content">
                 <h1><span class="text-accent">What gets measured</span><br>Gets managed.</h1>
@@ -309,7 +305,8 @@
             <div class="scroll-prompt" id="scroll-prompt">Scroll for more</div>
         </section>
 
-        <section class="manifesto fade-in-section" id="about">
+        <!-- 3.2. The Creator's Manifesto -->
+        <section class="manifesto" id="about">
             <div class="container">
                 <h2><span class="text-accent">Efficiency is doing things right</span><br>Effectiveness is doing the right things</h2>
                 <p>
@@ -321,13 +318,17 @@
             </div>
         </section>
 
-        <section class="portfolio fade-in-section" id="portfolio">
+        <!-- 3.3. Portfolio of Creations -->
+        <section class="portfolio" id="portfolio">
             <div class="container">
                 <h2>Portfolio of Creations</h2>
                 <div class="portfolio-grid">
                     
+                    <!-- Creation 1 -->
                     <div class="portfolio-item">
-                        <div class="portfolio-visual">[Clean Diagram of AI Agent Architecture]</div>
+                        <div class="portfolio-visual">
+                            <img src="images/knowledge_agent.png" alt="Architectural diagram of an AI Knowledge Agent">
+                        </div>
                         <div class="portfolio-description">
                             <h3>Creation 1: The Knowledge Agent</h3>
                             <p><strong>The Business Problem:</strong> A client's senior team spent dozens of hours per week searching through a vast, unstructured library of internal documents to answer critical business questions, leading to slow decisions and duplicated effort.</p>
@@ -336,8 +337,11 @@
                         </div>
                     </div>
 
+                    <!-- Creation 2 -->
                     <div class="portfolio-item">
-                        <div class="portfolio-visual">[Simple UI Mockup of the Firebase App]</div>
+                        <div class="portfolio-visual">
+                            <img src="images/claims_calc.png" alt="UI mockup of an automated claims calculator application">
+                        </div>
                         <div class="portfolio-description">
                             <h3>Creation 2: The Automated Claims Calculator</h3>
                             <p><strong>The Business Problem:</strong> A complex, manual spreadsheet-based process for calculating commercial claims was prone to human error, resulting in costly inaccuracies and compliance risks.</p>
@@ -346,8 +350,11 @@
                         </div>
                     </div>
 
+                    <!-- Creation 3 -->
                     <div class="portfolio-item">
-                        <div class="portfolio-visual">[Before/After Process Flow Diagram]</div>
+                        <div class="portfolio-visual">
+                            <img src="images/web_design.png" alt="Diagram illustrating a re-engineered commerce process">
+                        </div>
                         <div class="portfolio-description">
                             <h3>Creation 3: The Commerce Engine</h3>
                             <p><strong>The Business Problem:</strong> A high-growth retail client's operational processes were buckling under a 400% increase in order volume, leading to shipping delays, inventory mismatches, and declining customer satisfaction.</p>
@@ -360,178 +367,12 @@
             </div>
         </section>
         
-        <section class="curated-signal fade-in-section" id="inspiration">
+        <!-- CURATED SIGNAL SECTION -->
+        <section class="curated-signal" id="inspiration">
             <div class="container">
                 <h2>Curated Signal</h2>
                 <div class="curated-grid">
                     
                     <div class="curated-item video-item" data-video-id="bZemPPU4emI">
                         <div class="item-thumbnail" style="background-image: url('https://img.youtube.com/vi/bZemPPU4emI/hqdefault.jpg');">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
-                        <div class="item-description">
-                            <h3>The A.I.dentity</h3>
-                            <p class="item-source">YouTube / Short Film</p>
-                        </div>
-                    </div>
-                    
-                    <div class="curated-item video-item" data-video-id="3mpHM0VGVVc">
-                        <div class="item-thumbnail" style="background-image: url('https://img.youtube.com/vi/3mpHM0VGVVc/hqdefault.jpg');">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
-                        <div class="item-description">
-                            <h3>The AI Lens: Recreating Reality</h3>
-                            <p class="item-source">YouTube / AI Explained</p>
-                        </div>
-                    </div>
-
-                    <div class="curated-item video-item" data-video-id="c_b9xIadCJw">
-                        <div class="item-thumbnail" style="background-image: url('https://img.youtube.com/vi/c_b9xIadCJw/hqdefault.jpg');">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
-                        <div class="item-description">
-                            <h3>Simplicity as a System</h3>
-                            <p class="item-source">YouTube / Apple</p>
-                        </div>
-                    </div>
-
-                    <div class="curated-item video-item" data-video-id="uHYqhjPyLVQ">
-                        <div class="item-thumbnail" style="background-image: url('https://img.youtube.com/vi/uHYqhjPyLVQ/hqdefault.jpg');">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
-                        <div class="item-description">
-                            <h3>The Craft of Creation</h3>
-                            <p class="item-source">YouTube / Jony Ive</p>
-                        </div>
-                    </div>
-
-                    <div class="curated-item video-item" data-video-id="kV23ltzghpM">
-                        <div class="item-thumbnail" style="background-image: url('https://img.youtube.com/vi/kV23ltzghpM/hqdefault.jpg');">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
-                        <div class="item-description">
-                            <h3>Beyond the Screen</h3>
-                            <p class="item-source">YouTube / Humane</p>
-                        </div>
-                    </div>
-                    
-                    <div class="curated-item video-item" data-video-id="hVimVzgtD6w">
-                        <div class="item-thumbnail" style="background-image: url('https://img.youtube.com/vi/hVimVzgtD6w/hqdefault.jpg');">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
-                        <div class="item-description">
-                            <h3>Architecting the Future of AI</h3>
-                            <p class="item-source">YouTube / Lex Fridman Podcast</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="toolkit fade-in-section" id="toolkit">
-            <div class="container">
-                <h2><span class="text-accent">Strategy is a commodity</span><br>Execution is an art</h2>
-                <p>The tools of the creator, applied with craft and precision.</p>
-                <ul class="toolkit-list">
-                    <li>Python</li>
-                    <li>Data Science</li>
-                    <li>AI & Langchain</li>
-                    <li>Serverless Apps</li>
-                    <li>Firebase</li>
-                    <li>Business Process Modeling</li>
-                    <li>SQL & NoSQL</li>
-                    <li>API Integration</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="cta-section fade-in-section" id="contact">
-            <div class="container">
-                <h2>Let's Create Value.</h2>
-                <p>If you have a complex business problem that demands a creative, technical, and results-focused solution, let's talk. I invite you to a no-obligation strategy call to discuss how we can build your next engine of value.</p>
-                <!-- Replace '#' with your actual Calendly link -->
-                <a href="#" class="cta-button" target="_blank">Schedule Strategy Call</a>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer fade-in-section">
-        <div class="container">
-            <p>© 2025 Manus McDonald | <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a></p>
-        </div>
-    </footer>
-
-    <!-- Video Lightbox Element -->
-    <div class="lightbox" id="lightbox">
-        <div class="lightbox-content">
-            <div class="lightbox-aspect-ratio" id="lightbox-video">
-                <!-- YouTube iframe will be inserted here -->
-            </div>
-        </div>
-    </div>
-
-    <!-- JAVASCRIPT FOR INTERACTIVITY -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const scrollPrompt = document.getElementById('scroll-prompt');
-            const lightbox = document.getElementById('lightbox');
-            const lightboxVideo = document.getElementById('lightbox-video');
-            const videoItems = document.querySelectorAll('.video-item');
-
-            // --- Smart Scroll Prompt ---
-            function handleScroll() {
-                if (window.scrollY > 20) {
-                    scrollPrompt.classList.add('is-hidden');
-                } else {
-                    scrollPrompt.classList.remove('is-hidden');
-                }
-            }
-            window.addEventListener('scroll', handleScroll);
-
-            // --- Video Lightbox Functionality ---
-            videoItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    const videoId = item.getAttribute('data-video-id');
-                    if (videoId) {
-                        const iframe = document.createElement('iframe');
-                        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
-                        iframe.setAttribute('frameborder', '0');
-                        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-                        iframe.setAttribute('allowfullscreen', '');
-                        
-                        lightboxVideo.innerHTML = ''; // Clear previous video
-                        lightboxVideo.appendChild(iframe);
-                        lightbox.classList.add('is-visible');
-                    }
-                });
-            });
-
-            // Close lightbox when clicking on the background
-            lightbox.addEventListener('click', (e) => {
-                if (e.target === lightbox) {
-                    lightbox.classList.remove('is-visible');
-                    lightboxVideo.innerHTML = ''; // Stop video by removing iframe
-                }
-            });
-
-            // --- Subtle Scroll Transitions ---
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                    }
-                });
-            }, {
-                threshold: 0.1 // Trigger when 10% of the element is visible
-            });
-
-            const sectionsToFade = document.querySelectorAll('.fade-in-section');
-            sectionsToFade.forEach(section => {
-                observer.observe(section);
-            });
-        });
-    </script>
-
-</body>
-</html>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></s
