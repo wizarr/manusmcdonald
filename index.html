@@ -167,13 +167,11 @@
         .value-metric { font-weight: bold; font-size: 1.1rem; color: var(--accent-color); }
         
         /* ---------------------------------------------------- */
-        /* --- UPDATED: Curated Signal Section --- */
+        /* --- Curated Signal Section --- */
         /* ---------------------------------------------------- */
         .curated-signal { background-color: var(--secondary-color); border-top: 1px solid var(--border-color); }
         .curated-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* UPDATED to 3 columns */
-            gap: 2rem;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
         }
         .curated-item {
             border: 1px solid var(--border-color); border-radius: 8px;
@@ -186,6 +184,11 @@
             height: 180px; background-size: cover; background-position: center;
             display: flex; align-items: center; justify-content: center;
             position: relative;
+            filter: grayscale(100%); /* UPDATED: Apply filter by default */
+            transition: filter var(--transition-speed); /* UPDATED: Animate the filter */
+        }
+        .curated-item:hover .item-thumbnail {
+            filter: grayscale(0%); /* UPDATED: Remove filter on hover */
         }
         .item-thumbnail::before {
             content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
@@ -354,7 +357,7 @@
             </div>
         </section>
         
-        <!-- UPDATED CURATED SIGNAL SECTION -->
+        <!-- CURATED SIGNAL SECTION -->
         <section class="curated-signal" id="inspiration">
             <div class="container">
                 <h2>Curated Signal</h2>
