@@ -165,7 +165,6 @@
             height: 300px; display: flex; align-items: center; justify-content: center;
             border-radius: 8px; overflow: hidden; /* Hide parts of image that don't fit */
         }
-        /* UPDATED STYLE FOR PORTFOLIO IMAGES */
         .portfolio-visual img {
             width: 100%; height: 100%; object-fit: contain; /* Shrink to fit */
             padding: 1rem; /* Add padding around the image */
@@ -536,8 +535,12 @@
             // --- Subtle Scroll Transitions ---
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
+                    // UPDATED: Use if/else to make transitions persistent
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
+
+                    } else {
+                        entry.target.classList.remove('is-visible');
                     }
                 });
             }, {
