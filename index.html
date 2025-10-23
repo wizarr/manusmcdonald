@@ -375,4 +375,171 @@
                     
                     <div class="curated-item video-item" data-video-id="bZemPPU4emI">
                         <div class="item-thumbnail" style="background-image: url('https://img.youtube.com/vi/bZemPPU4emI/hqdefault.jpg');">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></s
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <div class="item-description">
+                            <h3>The A.I.dentity</h3>
+                            <p class="item-source">YouTube / Short Film</p>
+                        </div>
+                    </div>
+                    
+                    <div class="curated-item video-item" data-video-id="3mpHM0VGVVc">
+                        <div class="item-thumbnail" style="background-image: url('https://img.youtube.com/vi/3mpHM0VGVVc/hqdefault.jpg');">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <div class="item-description">
+                            <h3>The AI Lens: Recreating Reality</h3>
+                            <p class="item-source">YouTube / AI Explained</p>
+                        </div>
+                    </div>
+
+                    <div class="curated-item video-item" data-video-id="c_b9xIadCJw">
+                        <div class="item-thumbnail" style="background-image: url('https://img.youtube.com/vi/c_b9xIadCJw/hqdefault.jpg');">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <div class="item-description">
+                            <h3>Simplicity as a System</h3>
+                            <p class="item-source">YouTube / Apple</p>
+                        </div>
+                    </div>
+
+                    <div class="curated-item video-item" data-video-id="uHYqhjPyLVQ">
+                        <div class="item-thumbnail" style="background-image: url('https://img.youtube.com/vi/uHYqhjPyLVQ/hqdefault.jpg');">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <div class="item-description">
+                            <h3>The Craft of Creation</h3>
+                            <p class="item-source">YouTube / Jony Ive</p>
+                        </div>
+                    </div>
+
+                    <div class="curated-item video-item" data-video-id="kV23ltzghpM">
+                        <div class="item-thumbnail" style="background-image: url('https://img.youtube.com/vi/kV23ltzghpM/hqdefault.jpg');">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <div class="item-description">
+                            <h3>Beyond the Screen</h3>
+                            <p class="item-source">YouTube / Humane</p>
+                        </div>
+                    </div>
+                    
+                    <div class="curated-item video-item" data-video-id="hVimVzgtD6w">
+                        <div class="item-thumbnail" style="background-image: url('https://img.youtube.com/vi/hVimVzgtD6w/hqdefault.jpg');">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <div class="item-description">
+                            <h3>Architecting the Future of AI</h3>
+                            <p class="item-source">YouTube / Lex Fridman Podcast</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="toolkit fade-in-section" id="toolkit">
+            <div class="container">
+                <h2><span class="text-accent">Strategy is a commodity</span><br>Execution is an art</h2>
+                <p>The tools of the creator, applied with craft and precision.</p>
+                <ul class="toolkit-list">
+                    <li>Python</li>
+                    <li>Data Science</li>
+                    <li>AI & Langchain</li>
+                    <li>Serverless Apps</li>
+                    <li>Firebase</li>
+                    <li>Business Process Modeling</li>
+                    <li>SQL & NoSQL</li>
+                    <li>API Integration</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="cta-section fade-in-section" id="contact">
+            <div class="container">
+                <h2>Let's Create Value.</h2>
+                <p>If you have a complex business problem that demands a creative, technical, and results-focused solution, let's talk. I invite you to a no-obligation strategy call to discuss how we can build your next engine of value.</p>
+                <!-- Replace '#' with your actual Calendly link -->
+                <a href="#" class="cta-button" target="_blank">Schedule Strategy Call</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer fade-in-section">
+        <div class="container">
+            <p>© 2025 Manus McDonald | <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a></p>
+        </div>
+    </footer>
+
+    <!-- Video Lightbox Element -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <div class="lightbox-aspect-ratio" id="lightbox-video">
+                <!-- YouTube iframe will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FOR INTERACTIVITY -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollPrompt = document.getElementById('scroll-prompt');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxVideo = document.getElementById('lightbox-video');
+            const videoItems = document.querySelectorAll('.video-item');
+
+            // --- Smart Scroll Prompt ---
+            function handleScroll() {
+                if (window.scrollY > 20) {
+                    scrollPrompt.classList.add('is-hidden');
+                } else {
+                    scrollPrompt.classList.remove('is-hidden');
+                }
+            }
+            window.addEventListener('scroll', handleScroll);
+
+            // --- Video Lightbox Functionality ---
+            videoItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const videoId = item.getAttribute('data-video-id');
+                    if (videoId) {
+                        const iframe = document.createElement('iframe');
+                        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+                        iframe.setAttribute('frameborder', '0');
+                        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+                        iframe.setAttribute('allowfullscreen', '');
+                        
+                        lightboxVideo.innerHTML = ''; // Clear previous video
+                        lightboxVideo.appendChild(iframe);
+                        lightbox.classList.add('is-visible');
+                    }
+                });
+            });
+
+            // Close lightbox when clicking on the background
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('is-visible');
+                    lightboxVideo.innerHTML = ''; // Stop video by removing iframe
+                }
+            });
+
+            // --- Subtle Scroll Transitions ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            const sectionsToFade = document.querySelectorAll('.fade-in-section');
+            sectionsToFade.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+
+</body>
+</html>
