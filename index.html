@@ -48,7 +48,6 @@
         }
 
         .container { max-width: 960px; margin: auto; overflow: hidden; padding: 0 2rem; }
-        .container-fluid { max-width: 100%; padding: 0 2rem; }
 
         h1, h2, h3 { line-height: 1.2; font-weight: 700; }
         
@@ -90,6 +89,7 @@
             border-radius: 50%;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             transition: background-color var(--transition-speed);
+            cursor: pointer;
         }
         .header-cta-circle:hover { background-color: var(--primary-color); }
         .header-cta-circle .bar {
@@ -97,7 +97,6 @@
             margin: 3px 0; transition: background-color var(--transition-speed);
         }
         .header-cta-circle:hover .bar { background-color: var(--secondary-color); }
-        .hamburger, .mobile-nav { display: none; }
         
         /* ------------------------- */
         /* --- Sticky Vertical Link --- */
@@ -149,26 +148,21 @@
         }
         
         /* ---------------------------------------------------- */
-        /* --- Manifesto Section --- */
+        /* --- Manifesto & Portfolio Sections --- */
         /* ---------------------------------------------------- */
-        .manifesto { text-align: center; background-color: var(--secondary-color); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
-        .manifesto p { margin-left: auto; margin-right: auto; }
-
-        /* ---------------------------------------------------- */
-        /* --- Portfolio Section --- */
-        /* ---------------------------------------------------- */
-        .portfolio { background-color: var(--secondary-color); }
+        .manifesto, .portfolio { text-align: center; background-color: var(--secondary-color); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .manifesto p, .portfolio-description p { margin-left: auto; margin-right: auto; text-align: left; }
         .portfolio-grid { display: grid; grid-template-columns: 1fr; gap: 6rem; }
         .portfolio-item {
             display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: flex-start;
-            padding-top: 4rem; border-top: 1px solid var(--border-color);
+            padding-top: 4rem;
         }
         .portfolio-visual {
             background: transparent; border: 1px solid var(--border-color);
             height: 300px; display: flex; align-items: center; justify-content: center;
             font-style: italic; color: #aaa; border-radius: 8px;
         }
-        .portfolio-description h3 { color: var(--primary-color); }
+        .portfolio-description h3 { color: var(--primary-color); text-align: left; }
         .portfolio-description p { font-size: 1rem; color: #555; }
         .value-metric { font-weight: bold; font-size: 1.1rem; color: var(--accent-color); }
         
@@ -176,58 +170,71 @@
         /* --- NEW: Curated Signal Section --- */
         /* ---------------------------------------------------- */
         .curated-signal { background-color: var(--secondary-color); border-top: 1px solid var(--border-color); }
-        .carousel-viewport {
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-            padding-bottom: 1rem; /* Space for scrollbar if it appears */
+        .curated-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;
         }
-        /* Hide scrollbar for a cleaner look */
-        .carousel-viewport::-webkit-scrollbar { display: none; }
-        .carousel-viewport { -ms-overflow-style: none; scrollbar-width: none; }
-
-        .carousel-track { display: flex; gap: 2rem; width: max-content; }
-        .carousel-item {
-            flex: 0 0 320px; /* Set a fixed width for each item */
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            overflow: hidden;
+        .curated-item {
+            border: 1px solid var(--border-color); border-radius: 8px;
+            overflow: hidden; text-decoration: none;
             transition: transform var(--transition-speed);
         }
-        .carousel-item:hover { transform: translateY(-5px); }
+        .curated-item:hover { transform: translateY(-5px); }
         .item-thumbnail {
-            height: 180px; background-color: var(--ui-subtle-bg);
+            height: 250px; background-size: cover; background-position: center;
             display: flex; align-items: center; justify-content: center;
-            position: relative;
+            position: relative; cursor: pointer;
         }
-        .item-thumbnail svg { width: 40px; height: 40px; opacity: 0.3; }
-        .item-description { padding: 1rem; }
+        .item-thumbnail::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.1);
+            transition: background var(--transition-speed);
+        }
+        .curated-item:hover .item-thumbnail::before { background: rgba(0,0,0,0); }
+        .item-thumbnail svg {
+            width: 50px; height: 50px; fill: rgba(255,255,255,0.8);
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+            transition: transform 0.4s ease;
+        }
+        .curated-item:hover .item-thumbnail svg { transform: scale(1.1); }
+        .item-description { padding: 1.5rem; text-align: left;}
         .item-source { font-size: 0.8rem; color: var(--text-muted); margin: 0; }
+        .item-link { cursor: pointer; } /* For non-video items */
+
+        /* Lightbox for Video Player */
+        .lightbox {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 2000; opacity: 0; pointer-events: none;
+            transition: opacity var(--transition-speed);
+        }
+        .lightbox.is-visible { opacity: 1; pointer-events: auto; }
+        .lightbox-content { position: relative; width: 90%; max-width: 960px; }
+        .lightbox-aspect-ratio {
+            position: relative; padding-bottom: 56.25%; /* 16:9 */ height: 0;
+        }
+        .lightbox-aspect-ratio iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        }
 
 
         /* ---------------------------------------------------- */
-        /* --- Toolkit Section --- */
+        /* --- Toolkit & CTA Sections --- */
         /* ---------------------------------------------------- */
-        .toolkit { background-color: var(--secondary-color); text-align: center; border-top: 1px solid var(--border-color); }
+        .toolkit { text-align: center; border-top: 1px solid var(--border-color); }
         .toolkit-list {
             display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
             list-style: none; margin-top: 2rem;
         }
         .toolkit-list li {
-            border: 1px solid var(--border-color);
-            padding: 0.5rem 1rem; border-radius: 100px; /* pill shape */
+            border: 1px solid var(--border-color); padding: 0.5rem 1rem; border-radius: 100px;
             font-size: 0.9rem; color: #555;
         }
-
-        /* ---------------------------------------------------- */
-        /* --- CTA Section --- */
-        /* ---------------------------------------------------- */
         .cta-section { text-align: center; background-color: var(--primary-color); color: var(--secondary-color); }
         .cta-section h2 { color: var(--secondary-color); }
         .cta-section p { color: #aaa; margin-left: auto; margin-right: auto; }
         .cta-button {
-            display: inline-block;
-            background: var(--secondary-color); color: var(--primary-color);
+            display: inline-block; background: var(--secondary-color); color: var(--primary-color);
             padding: 1.2rem 3rem; margin-top: 2rem; border-radius: 50px;
             font-size: 1.2rem; font-weight: bold;
             transition: transform var(--transition-speed);
@@ -251,7 +258,6 @@
         @media (max-width: 768px) {
             h2 { font-size: 2rem; }
             .container { padding: 0 1rem; }
-            .container-fluid { padding: 0 1rem; }
             section { padding: 5rem 0; }
             .corner-nav { padding: 1.5rem 1rem; }
             .header-cta-circle { height: 50px; width: 50px; }
@@ -259,6 +265,7 @@
             .portfolio-visual { height: 200px; }
             .hero { height: 90vh; }
             .sticky-social-link { display: none; }
+            .curated-grid { grid-template-columns: 1fr; } /* Stack curation on mobile */
         }
     </style>
 </head>
@@ -343,51 +350,54 @@
         
         <!-- NEW CURATED SIGNAL SECTION -->
         <section class="curated-signal" id="inspiration">
-            <div class="container-fluid">
-                <h2 class="container">Curated Signal</h2>
-                <div class="carousel-viewport">
-                    <div class="carousel-track">
-                        <!-- Item 1 -->
-                        <a href="https://www.youtube.com/watch?v=bZemPPU4emI" target="_blank" class="carousel-item">
-                            <div class="item-thumbnail">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                            </div>
-                            <div class="item-description">
-                                <h3>The-A.I.dentity</h3>
-                                <p class="item-source">YouTube / Short Film</p>
-                            </div>
-                        </a>
-                        <!-- Item 2 -->
-                        <a href="https://www.reddit.com/r/StableDiffusion/comments/1ockul4/" target="_blank" class="carousel-item">
-                            <div class="item-thumbnail">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                            </div>
-                            <div class="item-description">
-                                <h3>AI-Generated Video Remixing</h3>
-                                <p class="item-source">Reddit / r/StableDiffusion</p>
-                            </div>
-                        </a>
-                        <!-- Item 3 -->
-                        <a href="https://youtu.be/3mpHM0VGVVc" target="_blank" class="carousel-item">
-                            <div class="item-thumbnail">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                            </div>
-                            <div class="item-description">
-                                <h3>OpenAI's Sora: A New Era</h3>
-                                <p class="item-source">YouTube / AI Explained</p>
-                            </div>
-                        </a>
-                        <!-- Item 4 -->
-                        <a href="https://www.reddit.com/r/aiArt/comments/1o8lio2/" target="_blank" class="carousel-item">
-                            <div class="item-thumbnail">
-                                <!-- Placeholder for an image link -->
-                            </div>
-                            <div class="item-description">
-                                <h3>Mastering AI Composition</h3>
-                                <p class="item-source">Reddit / r/aiArt</p>
-                            </div>
-                        </a>
+            <div class="container">
+                <h2>Curated Signal</h2>
+                <div class="curated-grid">
+                    
+                    <!-- Item 1: Video -->
+                    <div class="curated-item video-item" data-video-id="bZemPPU4emI">
+                        <div class="item-thumbnail" style="background-image: url('https://img.youtube.com/vi/bZemPPU4emI/hqdefault.jpg');">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <div class="item-description">
+                            <h3>The-A.I.dentity</h3>
+                            <p class="item-source">YouTube / Short Film</p>
+                        </div>
                     </div>
+
+                    <!-- Item 2: Link -->
+                    <a href="https://www.reddit.com/r/StableDiffusion/comments/1ockul4/" target="_blank" class="curated-item item-link">
+                        <div class="item-thumbnail">
+                            <!-- Placeholder, replace with an actual image if desired -->
+                        </div>
+                        <div class="item-description">
+                            <h3>AI-Generated Video Remixing</h3>
+                            <p class="item-source">Reddit / r/StableDiffusion</p>
+                        </div>
+                    </a>
+
+                    <!-- Item 3: Video -->
+                    <div class="curated-item video-item" data-video-id="3mpHM0VGVVc">
+                        <div class="item-thumbnail" style="background-image: url('https://img.youtube.com/vi/3mpHM0VGVVc/hqdefault.jpg');">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <div class="item-description">
+                            <h3>OpenAI's Sora: A New Era</h3>
+                            <p class="item-source">YouTube / AI Explained</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: Link -->
+                    <a href="https://www.reddit.com/r/aiArt/comments/1o8lio2/" target="_blank" class="curated-item item-link">
+                        <div class="item-thumbnail">
+                            <!-- Placeholder, replace with an actual image if desired -->
+                        </div>
+                        <div class="item-description">
+                            <h3>Mastering AI Composition</h3>
+                            <p class="item-source">Reddit / r/aiArt</p>
+                        </div>
+                    </a>
+
                 </div>
             </div>
         </section>
@@ -427,11 +437,24 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT FOR SMART SCROLL -->
+    <!-- Video Lightbox Element -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <div class="lightbox-aspect-ratio" id="lightbox-video">
+                <!-- YouTube iframe will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FOR INTERACTIVITY -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const scrollPrompt = document.getElementById('scroll-prompt');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxVideo = document.getElementById('lightbox-video');
+            const videoItems = document.querySelectorAll('.video-item');
 
+            // --- Smart Scroll Prompt ---
             function handleScroll() {
                 if (window.scrollY > 20) {
                     scrollPrompt.classList.add('is-hidden');
@@ -440,6 +463,32 @@
                 }
             }
             window.addEventListener('scroll', handleScroll);
+
+            // --- Video Lightbox Functionality ---
+            videoItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const videoId = item.getAttribute('data-video-id');
+                    if (videoId) {
+                        const iframe = document.createElement('iframe');
+                        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+                        iframe.setAttribute('frameborder', '0');
+                        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+                        iframe.setAttribute('allowfullscreen', '');
+                        
+                        lightboxVideo.innerHTML = ''; // Clear previous video
+                        lightboxVideo.appendChild(iframe);
+                        lightbox.classList.add('is-visible');
+                    }
+                });
+            });
+
+            // Close lightbox when clicking on the background
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('is-visible');
+                    lightboxVideo.innerHTML = ''; // Stop video by removing iframe
+                }
+            });
         });
     </script>
 
