@@ -167,22 +167,25 @@
         .value-metric { font-weight: bold; font-size: 1.1rem; color: var(--accent-color); }
         
         /* ---------------------------------------------------- */
-        /* --- NEW: Curated Signal Section --- */
+        /* --- UPDATED: Curated Signal Section --- */
         /* ---------------------------------------------------- */
         .curated-signal { background-color: var(--secondary-color); border-top: 1px solid var(--border-color); }
         .curated-grid {
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* UPDATED to 3 columns */
+            gap: 2rem;
         }
         .curated-item {
             border: 1px solid var(--border-color); border-radius: 8px;
             overflow: hidden; text-decoration: none;
             transition: transform var(--transition-speed);
+            cursor: pointer;
         }
         .curated-item:hover { transform: translateY(-5px); }
         .item-thumbnail {
-            height: 250px; background-size: cover; background-position: center;
+            height: 180px; background-size: cover; background-position: center;
             display: flex; align-items: center; justify-content: center;
-            position: relative; cursor: pointer;
+            position: relative;
         }
         .item-thumbnail::before {
             content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
@@ -203,7 +206,7 @@
         /* Lightbox for Video Player */
         .lightbox {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.85);
             display: flex; align-items: center; justify-content: center;
             z-index: 2000; opacity: 0; pointer-events: none;
             transition: opacity var(--transition-speed);
@@ -255,6 +258,9 @@
         /* ------------------------- */
         /* --- Responsive Design --- */
         /* ------------------------- */
+        @media (max-width: 960px) {
+            .curated-grid { grid-template-columns: repeat(2, 1fr); }
+        }
         @media (max-width: 768px) {
             h2 { font-size: 2rem; }
             .container { padding: 0 1rem; }
@@ -348,55 +354,71 @@
             </div>
         </section>
         
-        <!-- NEW CURATED SIGNAL SECTION -->
+        <!-- UPDATED CURATED SIGNAL SECTION -->
         <section class="curated-signal" id="inspiration">
             <div class="container">
                 <h2>Curated Signal</h2>
                 <div class="curated-grid">
                     
-                    <!-- Item 1: Video -->
                     <div class="curated-item video-item" data-video-id="bZemPPU4emI">
                         <div class="item-thumbnail" style="background-image: url('https://img.youtube.com/vi/bZemPPU4emI/hqdefault.jpg');">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
                         </div>
                         <div class="item-description">
-                            <h3>The-A.I.dentity</h3>
+                            <h3>The A.I.dentity</h3>
                             <p class="item-source">YouTube / Short Film</p>
                         </div>
                     </div>
-
-                    <!-- Item 2: Link -->
-                    <a href="https://www.reddit.com/r/StableDiffusion/comments/1ockul4/" target="_blank" class="curated-item item-link">
-                        <div class="item-thumbnail">
-                            <!-- Placeholder, replace with an actual image if desired -->
-                        </div>
-                        <div class="item-description">
-                            <h3>AI-Generated Video Remixing</h3>
-                            <p class="item-source">Reddit / r/StableDiffusion</p>
-                        </div>
-                    </a>
-
-                    <!-- Item 3: Video -->
+                    
                     <div class="curated-item video-item" data-video-id="3mpHM0VGVVc">
                         <div class="item-thumbnail" style="background-image: url('https://img.youtube.com/vi/3mpHM0VGVVc/hqdefault.jpg');">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
                         </div>
                         <div class="item-description">
-                            <h3>OpenAI's Sora: A New Era</h3>
+                            <h3>The AI Lens: Recreating Reality</h3>
                             <p class="item-source">YouTube / AI Explained</p>
                         </div>
                     </div>
 
-                    <!-- Item 4: Link -->
-                    <a href="https://www.reddit.com/r/aiArt/comments/1o8lio2/" target="_blank" class="curated-item item-link">
-                        <div class="item-thumbnail">
-                            <!-- Placeholder, replace with an actual image if desired -->
+                    <div class="curated-item video-item" data-video-id="c_b9xIadCJw">
+                        <div class="item-thumbnail" style="background-image: url('https://img.youtube.com/vi/c_b9xIadCJw/hqdefault.jpg');">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
                         </div>
                         <div class="item-description">
-                            <h3>Mastering AI Composition</h3>
-                            <p class="item-source">Reddit / r/aiArt</p>
+                            <h3>Simplicity as a System</h3>
+                            <p class="item-source">YouTube / Apple</p>
                         </div>
-                    </a>
+                    </div>
+
+                    <div class="curated-item video-item" data-video-id="uHYqhjPyLVQ">
+                        <div class="item-thumbnail" style="background-image: url('https://img.youtube.com/vi/uHYqhjPyLVQ/hqdefault.jpg');">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <div class="item-description">
+                            <h3>The Craft of Creation</h3>
+                            <p class="item-source">YouTube / Jony Ive</p>
+                        </div>
+                    </div>
+
+                    <div class="curated-item video-item" data-video-id="kV23ltzghpM">
+                        <div class="item-thumbnail" style="background-image: url('https://img.youtube.com/vi/kV23ltzghpM/hqdefault.jpg');">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <div class="item-description">
+                            <h3>Beyond the Screen</h3>
+                            <p class="item-source">YouTube / Humane</p>
+                        </div>
+                    </div>
+                    
+                    <div class="curated-item video-item" data-video-id="hVimVzgtD6w">
+                        <div class="item-thumbnail" style="background-image: url('https://img.youtube.com/vi/hVimVzgtD6w/hqdefault.jpg');">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <div class="item-description">
+                            <h3>Architecting the Future of AI</h3>
+                            <p class="item-source">YouTube / Lex Fridman Podcast</p>
+                        </div>
+                    </div>
 
                 </div>
             </div>
